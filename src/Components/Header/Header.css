@@ -1,0 +1,13 @@
+/* banner size er jonno css */
+.bannerDesign {
+    height: 600px;
+    object-fit: cover;
+  }
+
+/* je slider er moto coltese setar caption er design */
+.caption p {
+    font-family: "Secular One", sans-serif;
+    font-size: 1.3em;
+    margin-bottom: 55px;
+    color: rgb(2, 2, 2) !important;
+}

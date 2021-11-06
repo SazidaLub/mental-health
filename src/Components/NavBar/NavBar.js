@@ -1,74 +1,146 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import { Nav, Navbar, Button } from 'react-bootstrap';
 import { NavLink } from 'react-router-dom'
 import '../NavBar/NavBar.css'
 import logo1 from '../../Images/Logo1.png';
+import Grid from '@material-ui/core/Grid';
 
 const NavBar = () => {
-    const [hamburger, setHamburger] = useState(false);
-    return (
-        <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
-            <Navbar.Brand href="./home"><img src={logo1} alt="" style={{width: "40%",marginLeft:"0.5vw"}}/></Navbar.Brand>
-            
-           
-           
-            <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="ms-auto">
-                    <Nav.Link href="./doctor" style={{ color:"white" }}>Doctor</Nav.Link>
-                    <Nav.Link href="./about">About Us</Nav.Link>
-                    <Nav.Link href="./resources">Resources</Nav.Link>
-                    <Nav.Link href="./contact">Contact</Nav.Link>
-                    <Nav.Link href="./donate">Donate</Nav.Link>
-                    <Nav.Link href="./login"><Button style={{backgroundImage: "linear-gradient(yellow,lightgreen)", color:"black", borderRadius:"15px" }}>Login</Button></Nav.Link>
-                    
-           
-                </Nav>
+  const [hamburger, setHamburger] = useState(false);
+  return (
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top">
+      {/* navbar er logo ta   */}
+      <Navbar.Brand href="./home"><img src={logo1} alt="" style={{ width: "40%", marginLeft: "0.8vw" }} /></Navbar.Brand>
+      <Navbar.Collapse id="responsive-navbar-nav">
+        <Nav className="ms-auto navDesign">
+          {/* full screen er navlink gula */}
+          <Nav.Link href="./home" style={{ color: "white" }}>Home</Nav.Link>
+          <Nav.Link href="./doctors" style={{ color: "white" }}>Doctors</Nav.Link>
+          <Nav.Link href="./appointment" style={{ color: "white" }}>Appointment</Nav.Link>
+          <Nav.Link href="./resources" style={{ color: "white" }}>Resources</Nav.Link>
+          <Nav.Link href="./contact" style={{ color: "white" }}>Contact</Nav.Link>
+          <Nav.Link href="./donate" style={{ color: "white" }}>Donate</Nav.Link>
+          <Nav.Link href="./login" style={{ color: "white" }}><Button style={{ backgroundImage: "linear-gradient(yellow,aqua)", color: "black", borderRadius: "13px", font: "" }}>Login</Button></Nav.Link>
+        </Nav>
+      </Navbar.Collapse>
+      {/* right side er bar gula hamburger types segula */}
+      <div
+        id="nav-ham"
+        className={`${hamburger && "Diam"}`}
+        onClick={() => setHamburger(!hamburger)}>
+        <div className="ham top"></div>
+        <div className="ham middle"></div>
+        <div className="ham bottom"></div>
+      </div>
 
-            </Navbar.Collapse>
-            <div
-                    id="nav-ham"
-                    className={`${hamburger && "Diam"}`}
-                    onClick={() => setHamburger(!hamburger)}>
-                    <div className="ham top"></div>
-                    <div className="ham middle"></div>
-                    <div className="ham bottom"></div>
-                </div>
-                 {/* Hidden hamburger menu nav */}
-          <div className={`hiddenNav ${hamburger && "hamburgerOpen"}`}>
+      {/* Hidden hamburger menu nav */}
+      <div className={`hiddenNav ${hamburger && "hamburgerOpen"}`}>
         <nav className="hiddenNavSearch-user">
-          <ul className="hamburger-menu">
-            <li className="hamburger-menu-item">
-              <NavLink to="/" className="hm-hover1">
-                Home
-              </NavLink>
-            </li>
-            <li className="hamburger-menu-item">
-              <NavLink to="/about" className="hm-hover2">
-                About Us
-              </NavLink>
-            </li>
-            <li className="hamburger-menu-item">
-              <NavLink to="/services" className="hm-hover3">
-                Our Services
-              </NavLink>
-            </li>
-            <li className="hamburger-menu-item">
-              <NavLink to="/contact" className="hm-hover4">
-                Contact Us
-              </NavLink>
+          <Grid container spacing={3} style={{ marginTop: "2%" }}>
+            {/* column hishebe prothom ta */}
+            <Grid item xs={6} sm={6} md={6}>
+              <ul className="hamburger-menu">
+                <li className="hamburger-menu-item">
+                  <NavLink to="/" className="hm-hover1">
+                    Home
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/doctors" className="hm-hover1">
+                    Doctors
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/blog" className="hm-hover2">
+                    Blog
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/resources" className="hm-hover2">
+                    Resources
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/contact" className="hm-hover3">
+                    Contact
+                  </NavLink>
 
-            </li>
-            <li className="hamburger-menu-item">
-              <NavLink to="/contact" className="hm-hover4">
-                Contact Us
-              </NavLink>
-
-            </li>
-          </ul>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/donate" className="hm-hover3">
+                    Donate
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/about" className="hm-hover4">
+                    About Us
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/survey" className="hm-hover4">
+                    Survey
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <Nav.Link href="./login" className="hm-hover4"><Button style={{ backgroundImage: "linear-gradient(yellow,aqua)", color: "black", borderRadius: "13px", fontFamily: "Secular One" }}>Login</Button></Nav.Link>
+                </li>
+              </ul>
+            </Grid>
+            {/* column hishebe second ta */}
+            <Grid item xs={6} sm={6} md={6}>
+              <ul className="hamburger-menu">
+                <li className="hamburger-menu-item">
+                  <NavLink to="/projects" className="hm-hover1">
+                    Projects
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/stories" className="hm-hover1">
+                    Our Stories
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/newsPortal" className="hm-hover2">
+                    News Portal
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/appointment" className="hm-hover2">
+                    Appointment
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/privacyPolicy" className="hm-hover3">
+                    Privacy Policy
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/details" className="hm-hover3">
+                    What to look for
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/awareness" className="hm-hover4">
+                    Mental Health Awareness
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/country" className="hm-hover4">
+                    Steps taken by different countries
+                  </NavLink>
+                </li>
+                <li className="hamburger-menu-item">
+                  <NavLink to="/covid" className="hm-hover4">
+                    Covid-19 affect on mental health
+                  </NavLink>
+                </li>
+              </ul>
+            </Grid>
+          </Grid>
         </nav>
-        </div>
-        </Navbar>
-    );
+      </div>
+    </Navbar>
+  );
 };
 
 export default NavBar;

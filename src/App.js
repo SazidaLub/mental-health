@@ -3,9 +3,12 @@ import { createContext, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter as Router,Switch, Route} from "react-router-dom";
 import Navbar from './Components/NavBar/NavBar';
-// import Home from './Components/Home/Home';
-// import Login from './Components/Login/Login';
+import Home from './Components/Home/Home';
+import Login from './Components/Login/Login';
 import PrivateRoute from './Components/PrivateRoute/PrivateRoute';
+import Contact from './Components/Contact/Contact';
+import Footer from './Components/Footer/Footer';
+import Books from './Components/Books/Books';
 
 
 export const UserContext = createContext();
@@ -19,19 +22,26 @@ function App() {
         <h4>{loggedInUser.name}</h4>
         <Switch>
           <Route path="/home">
-            {/* <Home></Home> */}
+            <Home></Home>
+          </Route>
+          <Route exact path="/contact">
+            <Contact></Contact>
+          </Route>
+          <Route exact path="/resources">
+            <Books></Books>
           </Route>
           <Route path="/login">
-            {/* <Login></Login> */}
+            <Login></Login>
           </Route>
           <Route exact path="/">
-            {/* <Home /> */}
+            <Home />
           </Route>
           <PrivateRoute path="/addProducts">
             </PrivateRoute>
         </Switch>
+        <Footer/>
       </Router>
-    </UserContext.Provider>
+     </UserContext.Provider>
   );
 }
 
