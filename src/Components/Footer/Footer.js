@@ -72,9 +72,9 @@ const Footer = () => {
 
             <li className="pt-1"><Link to="/contact" className="ListDesign"> Contact </Link> </li>
 
-            <li className="pt-1"> <Link to="/privacyPolicy" className="ListDesign"> Privacy Policy </Link> </li>
+            <li className="pt-1"> <Link to="/privacy" className="ListDesign"> Privacy Policy </Link> </li>
 
-            <li className="pt-1"><Link to="/details" className="ListDesign"> What to look for </Link></li>
+            <li className="pt-1"><Link to="/definition" className="ListDesign"> What to look for </Link></li>
 
             <li className="pt-1"><Link to="/covid" className="ListDesign"> Covid-19 affect on mental health </Link></li>
 
@@ -100,7 +100,7 @@ const Footer = () => {
 
             <li className="pt-1"><Link to="/stories" className="ListDesign">Our Stories</Link></li>
 
-            <li className="pt-1"><Link to="/newsPortal" className="ListDesign"> News Portal</Link></li>
+            <li className="pt-1"><Link to="/news" className="ListDesign"> News Portal</Link></li>
 
             <li className="pt-1"><Link to="/appointment" className="ListDesign"> Appointment </Link></li>
 

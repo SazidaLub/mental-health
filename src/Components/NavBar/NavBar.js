@@ -100,7 +100,7 @@ const NavBar = () => {
                   </NavLink>
                 </li>
                 <li className="hamburger-menu-item">
-                  <NavLink to="/newsPortal" className="hm-hover2">
+                  <NavLink to="/news" className="hm-hover2">
                     News Portal
                   </NavLink>
                 </li>
@@ -110,12 +110,12 @@ const NavBar = () => {
                   </NavLink>
                 </li>
                 <li className="hamburger-menu-item">
-                  <NavLink to="/privacyPolicy" className="hm-hover3">
+                  <NavLink to="/privacy" className="hm-hover3">
                     Privacy Policy
                   </NavLink>
                 </li>
                 <li className="hamburger-menu-item">
-                  <NavLink to="/details" className="hm-hover3">
+                  <NavLink to="/definition" className="hm-hover3">
                     What to look for
                   </NavLink>
                 </li>

@@ -1,0 +1,33 @@
+.header-container {
+    height:600px;
+    position:relative;
+    background-image: url('../../Images/aboutBg.jpg');
+    background-size: cover;
+    z-index: -1;
+    
+}
+.header-container::after{
+    height:600px;
+    content:' ';
+    position: absolute;
+    top: 0;
+    width: 30%;
+    right: 0;
+    background-color: rgb(194, 197, 196);
+    z-index: -50;
+}
+.info-primary{
+    background-color: aqua;
+}
+.info-secondary{
+    background-color: rgb(194, 197, 196);
+}
+.info-icon{
+    font-size: 3rem;
+    margin-left: 10px;
+}
+.info-container{
+    padding: 20px;
+    height: 120px;
+    margin-top: 30px;
+}
