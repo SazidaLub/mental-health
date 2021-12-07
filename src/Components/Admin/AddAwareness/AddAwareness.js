@@ -4,6 +4,8 @@ import { Container, Table, Button } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 // import Manage from './Manage/Manage';
 // import './AddAwareness.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 const AddAwareness = () => {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -34,7 +36,7 @@ const AddAwareness = () => {
             body: JSON.stringify(awarenessData)
         })
             .then(res => console.log('server side response', res))
-            alert('Awareness created successfully.');
+        alert('Awareness created successfully.');
     };
     const handleImageUpload = awareness => {
         console.log(awareness.target.files[0]);
@@ -50,30 +52,28 @@ const AddAwareness = () => {
                 console.log(error);
             });
     }
-    // function myFunction() {
-    //     console.log('Clicked search');
-    //     if (document.getElementById("addawareness") && document.getElementById("table")) {
-    //         document.getElementById("table").style.display = "block";
-    //         document.getElementById("addawareness").style.display = "none";
-    //     }
-    // }
-    // function myFunction1() {
-    //     console.log('Clicked search');
-    //     if (document.getElementById("addAwarenesss") && document.getElementById("table")) {
-    //         document.getElementById("table").style.display = "none";
-    //         document.getElementById("addawareness").style.display = "block";
-    //     }
-    // }
-    
+    const [state, setState] = useState();
+    const deleteEvent = id => {
+        console.log('remove clicked', id);
+        const url = `http://localhost:4000/deleteAwareness/${id}`;
+        fetch(url, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log('deleted successfully', id);
+                alert("Deleted Successfully")
+                // if (result) {
+                //     peoples.target.parentNode.style.display = "none"
+                // }
+            })
+    }
+
+
 
     return (
-        <div classTitle="m-5 p-5">
-            {/* <div class="sidenav">
-                <a href="#addawareness" onClick={myFunction}>Manage Awareness</a>
-                <a href="#addawareness" onClick={myFunction1}>Add Awareness</a>
-                <a href="#edit">Edit Awareness</a>
-            </div> */}
-            <div class="main m-5 p-5" id="addAwareness">
+        <div classTitle="">
+            <div id="addAwareness">
                 <div id="addawareness">
                     <h1>Add Awareness</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -93,19 +93,30 @@ const AddAwareness = () => {
                         <br />
                         <input name="exampleRequired" type="file" onChange={handleImageUpload} />
                         <br />
-                        <input type="submit" name="Save" classTitle="submitbtn" style={{ backgroundImage: "linear-gradient(yellow,aqua)", color: "black", borderRadius: "13px", font: "" }}/>
+                        <small>Please wait for few seconds</small><br />
+                        <input type="submit" name="Save" classTitle="submitbtn" style={{ backgroundImage: "linear-gradient(yellow,aqua)", color: "black", borderRadius: "13px", border: "none", padding: "10px", marginTop: "20px" }} />
                     </form>
                 </div>
-                <Table id="table">
-                    <tr>
-                        <th>Awareness Title</th>
-                        <th>Place</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </tr>
-                    {/* {
-                        awareness.map(awareness => <Manage key={awareness.name} awareness={awareness}></Manage>)
-                    } */}
+                <Table striped bordered hover variant="dark" style={{ width: "90%", marginTop: "20px",display:"flex",justifyContent:"end" }}>
+                    <thead>
+                        {/* <tr>
+                            <th>Image</th>
+                            <th>Delete</th>
+                        </tr> */}
+                    </thead>
+                    <tbody>
+                    <div className="row">
+                        {
+                            awareness.map(result =>
+                                <div className="col-md-3">
+                                <tr>
+
+                                    <td className=""><img src={result.imageURL} alt="" className="img-fluid" /></td>
+                                    <td><FontAwesomeIcon icon={faTrashAlt} onClick={() => deleteEvent(result._id)} /></td>
+                                </tr>
+                                </div>)}
+                                </div>
+                    </tbody>
                 </Table>
             </div>
 

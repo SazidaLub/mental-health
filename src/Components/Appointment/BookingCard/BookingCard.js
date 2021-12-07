@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import AppointmentForm from '../AppointmentForm/AppointmentForm';
 import { Button } from 'react-bootstrap';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import Post from '../Post';
 
 const BookingCard = ({booking, date}) => {
     const [modalIsOpen,setIsOpen] = useState(false);
@@ -22,6 +23,7 @@ const BookingCard = ({booking, date}) => {
                     <br/>
                     <button onClick={openModal} style={{ backgroundColor:"aqua", color: "black", borderRadius: "13px", fontFamily: "Secular One" }} className="btn text-uppercase">Book Appointment</button>
                     <AppointmentForm modalIsOpen={modalIsOpen} appointmentOn={booking.name} closeModal={closeModal} date={date}></AppointmentForm>
+                    {/* <Post></Post> */}
                 </div>
             </div>
         </div>

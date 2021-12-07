@@ -78,6 +78,12 @@ const Footer = () => {
 
             <li className="pt-1"><Link to="/covid" className="ListDesign"> Covid-19 affect on mental health </Link></li>
 
+            <li className="pt-1"> <Link to="/side" className="ListDesign"> Add Review </Link> </li>
+
+<li className="pt-1"><Link to="/community" className="ListDesign"> Community Activities </Link></li>
+
+
+
             <li className="pt-1"><Link to="./login"><Button style={{ backgroundImage: "linear-gradient(yellow,aqua)", color: "black", borderRadius: "13px", fontFamily: "Secular One", marginLeft: "30px" }}>Login</Button></Link></li>
 
           </ul>
@@ -106,6 +112,12 @@ const Footer = () => {
 
 
             <li className="pt-1"> <Link to="/awareness" className="ListDesign"> Mental Health Awareness </Link></li>
+
+            <li className="pt-1"><Link to="/dayWeek" className="ListDesign"> Mental Health Day, Week </Link></li>
+
+            <li className="pt-1"><Link to="/side" className="ListDesign"> Apply For Local Summit </Link></li>
+
+            <li className="pt-1"><Link to="/side" className="ListDesign"> Apply for Volunteering </Link></li>
 
             <li className="pt-1"> <Link to="/country" className="ListDesign"> Steps taken by different countries </Link> </li>
 

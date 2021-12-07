@@ -4,6 +4,10 @@ import { Container, Table, Button } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 import Manage from '../Manage/Manage';
 import './AddAbout.css'
+import AboutMain from '../../About/AboutMain'
+import { Card } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 const AddAbout = () => {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -12,7 +16,7 @@ const AddAbout = () => {
     const [peoples, setPeoples] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:4000/peoples')
+        fetch(`http://localhost:4000/peoples`)
             .then(res => res.json())
             .then(data => setPeoples(data))
     }, [])
@@ -25,7 +29,7 @@ const AddAbout = () => {
             imageURL: imageURL
         };
         const url = `http://localhost:4000/addPeoples`;
-        console.log('people data', peopleData);
+        console.log('result data', peopleData);
         fetch(url, {
             method: 'POST',
             headers: {
@@ -34,12 +38,13 @@ const AddAbout = () => {
             body: JSON.stringify(peopleData)
         })
             .then(res => console.log('server side response', res))
+        alert("People added successfully")
     };
-    const handleImageUpload = people => {
-        console.log(people.target.files[0]);
+    const handleImageUpload = result => {
+        console.log(result.target.files[0]);
         const imageData = new FormData();
         imageData.set('key', 'a933000ef6755dd3610166024f14e3c7')
-        imageData.append('image', people.target.files[0])
+        imageData.append('image', result.target.files[0])
 
         axios.post('https://api.imgbb.com/1/upload', imageData)
             .then(function (response) {
@@ -49,30 +54,27 @@ const AddAbout = () => {
                 console.log(error);
             });
     }
-    // function myFunction() {
-    //     console.log('Clicked search');
-    //     if (document.getElementById("addpeople") && document.getElementById("table")) {
-    //         document.getElementById("table").style.display = "block";
-    //         document.getElementById("addpeople").style.display = "none";
-    //     }
-    // }
-    // function myFunction1() {
-    //     console.log('Clicked search');
-    //     if (document.getElementById("addPeoples") && document.getElementById("table")) {
-    //         document.getElementById("table").style.display = "none";
-    //         document.getElementById("addpeople").style.display = "block";
-    //     }
-    // }
-    
+
+    const [state, setState] = useState();
+    const deleteEvent = id => {
+        console.log('remove clicked', id);
+        const url = `http://localhost:4000/deletePeople/${id}`;
+        fetch(url, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log('deleted successfully', id);
+                alert("Deleted Successfully")
+                // if (result) {
+                //     peoples.target.parentNode.style.display = "none"
+                // }
+            })
+    }
 
     return (
-        <div className="m-5 p-5">
-            {/* <div class="sidenav">
-                <a href="#addpeople" onClick={myFunction}>Manage People</a>
-                <a href="#addpeople" onClick={myFunction1}>Add People</a>
-                <a href="#edit">Edit People</a>
-            </div> */}
-            <div class="main" id="addPeoples">
+        <div className="">
+            <div id="addPeoples">
                 <div id="addpeople">
                     <h1>Add People</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -92,19 +94,31 @@ const AddAbout = () => {
                         <br />
                         <input name="exampleRequired" type="file" onChange={handleImageUpload} />
                         <br />
-                        <input type="submit" name="Save" className="submitbtn" style={{ backgroundImage: "linear-gradient(yellow,aqua)", color: "black", borderRadius: "13px", font: "" }}/>
+                        <small>Please wait for few seconds</small><br />
+                        <input type="submit" name="Save" className="submitbtn" style={{ backgroundImage: "linear-gradient(yellow,aqua)", color: "black", borderRadius: "13px", font: "" }} />
                     </form>
                 </div>
-                <Table id="table">
-                    <tr>
-                        <th>People Name</th>
-                        <th>Resignation</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </tr>
-                    {/* {
-                        peoples.map(people => <Manage key={people.name} people={people}></Manage>)
-                    } */}
+                <Table striped bordered hover variant="dark" style={{ width: "90%", marginTop: "20px" }}>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Resignation</th>
+                            <th>Email</th>
+                            <th>Image</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            peoples.map(result =>
+                                <tr>
+                                    <td>{result.name}</td>
+                                    <td>{result.resignation}</td>
+                                    <td>{result.email}</td>
+                                    <td className=""><img src={result.imageURL} alt="" className="img-fluid w-60 display-flex justify-content-center" /></td>
+                                    <td><FontAwesomeIcon icon={faTrashAlt} onClick={() => deleteEvent(result._id)} /></td>
+                                </tr>)}
+                    </tbody>
                 </Table>
             </div>
 

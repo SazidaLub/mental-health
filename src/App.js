@@ -31,6 +31,20 @@ import AddCountry from './Components/Admin/AddCountry/AddCountry';
 import Country from './Components/Country/Country';
 import AddCovid from './Components/Admin/AddCovid/AddCovid';
 import Covid from './Components/Covid/Covid';
+import AddDonate from './Components/Admin/AddDonate/AddDonate';
+import Donate from './Components/Donate/Donate';
+import Side from './Components/side/Side';
+import Stories from './Components/Stories/Stories'
+import AddReviews from './Components/User/AddReview/AddReview';
+import Reviews from './Components/Reviews/Reviews';
+import AddPlan from './Components/User/AddPlan/AddPlan';
+import Plan from './Components/Plan/Plan';
+import AddCommunity from './Components/Admin/AddCommunity/AddCommunity';
+import Community from './Components/Community/Community';
+import AddVolunteer from './Components/User/AddVolunteer/AddVolunteer';
+import Volunteer from './Components/Volunteer/Volunteer';
+import AddDayWeek from './Components/Admin/AddDayWeek/AddDayWeek';
+import DayWeek from './Components/DayWeek/DayWeek';
 
 
 export const UserContext = createContext();
@@ -46,6 +60,17 @@ function App() {
           <Route path="/home">
             <Home></Home>
           </Route>
+
+          <PrivateRoute path="/side">
+            <Side></Side>
+          </PrivateRoute>
+          {/* <Route path="/side">
+            <Side></Side>
+          </Route> */}
+
+
+
+
           <Route exact path="/contact">
             <Contact></Contact>
           </Route>
@@ -53,7 +78,7 @@ function App() {
             <Books></Books>
           </Route>
           <Route path="/login">
-            <Login></Login>
+          <Login></Login>
           </Route>
           <Route path="/about">
             <About></About>
@@ -130,6 +155,60 @@ function App() {
            <Covid></Covid>
           </Route>
 
+
+          <Route path="/addDonate">
+            <AddDonate></AddDonate>
+          </Route>
+          <Route path="/donate">
+           <Donate></Donate>
+          </Route>
+
+
+          <Route path="/stories">
+            <Stories></Stories>
+            </Route>
+
+
+            <Route path="/addReviews">
+            <AddReviews></AddReviews>
+          </Route>
+          <Route path="/reviews">
+           <Reviews></Reviews>
+          </Route>
+
+
+          <Route path="/addPlan">
+            <AddPlan></AddPlan>
+          </Route>
+          <Route path="/plan">
+           <Plan></Plan>
+          </Route>
+
+
+
+          <Route path="/addCommunity">
+            <AddCommunity></AddCommunity>
+          </Route>
+          <Route path="/community">
+           <Community></Community>
+          </Route>
+
+
+
+          <Route path="/addVolunteer">
+            <AddVolunteer></AddVolunteer>
+          </Route>
+          <Route path="/volunteer">
+           <Volunteer></Volunteer>
+          </Route>
+
+
+          <Route path="/addDayWeek">
+            <AddDayWeek></AddDayWeek>
+          </Route>
+          <Route path="/dayWeek">
+           <DayWeek></DayWeek>
+          </Route>
 
 
           <Route path="/appointment">

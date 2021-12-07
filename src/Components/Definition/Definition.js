@@ -14,9 +14,9 @@ const Definition = () => {
             .then(data => setDefinition(data))
     }, [])
     return (
-        <div>
+        <div className="backDes">
             <div className="mt-5 pt-5 mb-5">
-                <h1 className="text-center">What To Look For</h1>
+                <h1 className="text-center pt-5">What To Look For</h1>
                 <div className="row m-3 p-3">
                     {
                         definition.length === 0 && <Spinner animation="border" role="status">
@@ -25,10 +25,10 @@ const Definition = () => {
                     }
                     {
                         definition.map(project =>
-                            <div className="col-md-12">
+                            <div className="col-md-4">
                                 <Card className="m-2 design" border="warning">
-                                    <Card.Img variant="top" src={project.imageURL} />
-                                    <Card.Body>
+                                    <Card.Img variant="top" src={project.imageURL} style={{height:"230px"}}/>
+                                    <Card.Body style={{height:"350px"}}>
                                         <h3>{project.title}</h3>
                                         <h6>{project.subTitle}</h6>
                                         <h6>{project.details}</h6>

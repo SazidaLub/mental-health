@@ -12,7 +12,7 @@ const Blogs = () => {
             .then(data => setBlogs(data))
     }, [])
     return (
-        <div>
+        <div className="backDes">
             <div className="mt-5 pt-5 mb-5">
                 <h1 className="text-center">Blogs</h1>
                 <div className="row m-3 p-3">
@@ -25,7 +25,7 @@ const Blogs = () => {
                         blogs.map(blog =>
                             <div className="col-md-6">
                                 <Card className="m-2 design" border="warning">
-                                    <Card.Img variant="top" src={blog.imageURL} />
+                                    <Card.Img variant="top" src={blog.imageURL} style={{height:"230px"}}/>
                                     <Card.Body>
                                         <h3>{blog.title}</h3>
                                         <h6>{blog.date}</h6>

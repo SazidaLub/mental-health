@@ -14,7 +14,7 @@ const Country = () => {
             .then(data => setCountry(data))
     }, [])
     return (
-        <div>
+        <div className="backDes">
             <div className="mt-5 pt-5 mb-5">
                 <h1 className="text-center">Steps Taken By Different Countries</h1>
                 <div className="row m-3 p-3">
@@ -25,7 +25,7 @@ const Country = () => {
                     }
                     {
                         country.map(result =>
-                            <div className="col-md-3">
+                            <div className="col-md-4">
                                 <Card className="m-2 design" border="warning">
                                     <Card.Img variant="top" src={result.imageURL} />
                                     <Card.Body>

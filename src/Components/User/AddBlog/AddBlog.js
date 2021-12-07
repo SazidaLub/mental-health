@@ -67,13 +67,13 @@ const Addblogs = () => {
     
 
     return (
-        <div classTitle="m-5 p-5">
+        <div classTitle="">
             {/* <div class="sidenav">
                 <a href="#addblogs" onClick={myFunction}>Manage Blogs</a>
                 <a href="#addblogs" onClick={myFunction1}>Add Blogs</a>
                 <a href="#edit">Edit Blogs</a>
             </div> */}
-            <div class="main m-5 p-5" id="addBlogs">
+            <div class="main" id="addBlogs">
                 <div id="addblogs">
                     <h1>Add Blogs</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -93,7 +93,7 @@ const Addblogs = () => {
                         <br />
                         <input name="exampleRequired" type="file" onChange={handleImageUpload} />
                         <br />
-                        <input type="submit" name="Save" classTitle="submitbtn" style={{ backgroundImage: "linear-gradient(yellow,aqua)", color: "black", borderRadius: "13px", font: "" }}/>
+                        <input type="submit" name="Save" classTitle="submitbtn" style={{ backgroundImage: "linear-gradient(yellow,aqua)", color: "black", borderRadius: "13px", border:"none",padding:"10px",marginTop:"20px"}}/>
                     </form>
                 </div>
                 <Table id="table">

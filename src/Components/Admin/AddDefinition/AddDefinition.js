@@ -4,6 +4,8 @@ import { Container, Table, Button } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 // import Manage from './Manage/Manage';
 // import './AddDefinition.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 const AddDefinition = () => {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -50,30 +52,32 @@ const AddDefinition = () => {
                 console.log(error);
             });
     }
-    // function myFunction() {
-    //     console.log('Clicked search');
-    //     if (document.getElementById("adddefinition") && document.getElementById("table")) {
-    //         document.getElementById("table").style.display = "block";
-    //         document.getElementById("adddefinition").style.display = "none";
-    //     }
-    // }
-    // function myFunction1() {
-    //     console.log('Clicked search');
-    //     if (document.getElementById("addDefinitions") && document.getElementById("table")) {
-    //         document.getElementById("table").style.display = "none";
-    //         document.getElementById("adddefinition").style.display = "block";
-    //     }
-    // }
+    const [state, setState] = useState();
+    const deleteEvent = id => {
+        console.log('remove clicked', id);
+        const url = `http://localhost:4000/deleteDefinition/${id}`;
+        fetch(url, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log('deleted successfully', id);
+                alert("Deleted Successfully")
+                // if (result) {
+                //     peoples.target.parentNode.style.display = "none"
+                // }
+            })
+    }
     
 
     return (
-        <div classTitle="m-5 p-5">
+        <div classTitle="">
             {/* <div class="sidenav">
                 <a href="#adddefinition" onClick={myFunction}>Manage Definition</a>
                 <a href="#adddefinition" onClick={myFunction1}>Add Definition</a>
                 <a href="#edit">Edit Definition</a>
             </div> */}
-            <div class="main m-5 p-5" id="addDefinition">
+            <div  id="addDefinition">
                 <div id="adddefinition">
                     <h1>Add Definition</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -93,19 +97,31 @@ const AddDefinition = () => {
                         <br />
                         <input name="exampleRequired" type="file" onChange={handleImageUpload} />
                         <br />
-                        <input type="submit" name="Save" classTitle="submitbtn" style={{ backgroundImage: "linear-gradient(yellow,aqua)", color: "black", borderRadius: "13px", font: "" }}/>
+                        <small>Please wait for few seconds</small><br />
+                        <input type="submit" name="Save" classTitle="submitbtn" style={{ backgroundImage: "linear-gradient(yellow,aqua)", color: "black", borderRadius: "13px", border:"none",padding:"10px",marginTop:"20px"}}/>
                     </form>
                 </div>
-                <Table id="table">
-                    <tr>
-                        <th>Definition Title</th>
-                        <th>Place</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </tr>
-                    {/* {
-                        definition.map(definition => <Manage key={definition.name} definition={definition}></Manage>)
-                    } */}
+                <Table striped bordered hover variant="none" style={{ width: "90%", marginTop: "20px" }}>
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Subtitle</th>
+                            <th>Details</th>
+                            <th>Image</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            definition.map(people =>
+                                <tr>
+                                    <td>{people.title}</td>
+                                    <td className="text1">{people.subTitle}</td>
+                                    <td className="text">{people.details}</td>
+                                    <td className=""><img src={people.imageURL} alt="" className="img-fluid w-100 display-flex justify-content-center" /></td>
+                                    <td><FontAwesomeIcon icon={faTrashAlt} onClick={() => deleteEvent(people._id)} /></td>
+                                </tr>)}
+                    </tbody>
                 </Table>
             </div>
 

@@ -11,7 +11,7 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 const Doctors = () => {
 
   return (
-    <div className="ms-5 pt-5 mb-5 pb-5">
+    <div className="ms-5 pt-5 mb-5 pb-5 backDes">
       <h1 className="text-center mt-5 pt-5">Doctors List</h1>
       <Grid container spacing={3} style={{ marginTop: "4%", width: "100%", alignItems: "center" }}>
         {Data.map(post => {

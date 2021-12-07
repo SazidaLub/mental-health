@@ -14,9 +14,10 @@ const Survey = () => {
             .then(data => setSurvey(data))
     }, [])
     return (
-        <div>
+        <div   className="backDes">
             <div className="mt-5 pt-5 mb-5">
                 <h1 className="text-center">Survey</h1>
+                <p className="text-center">A survey on Mental Health, it's impact on people</p>
                 <div className="row m-3 p-3">
                     {
                         survey.length === 0 && <Spinner animation="border" role="status">
@@ -38,6 +39,7 @@ const Survey = () => {
                         )
                     }
                 </div>
+                <button type="button" className="btn btn-info text-white fw-bold fs-5 ms-5 ps-5"><a href={"https://docs.google.com/spreadsheets/d/1ztZej26CtvW72j6mJWCSnESu9EL9J3-5svBcJgUvp5c/edit?usp=sharing"} target="_blank" style={{ textDecoration: 'none', color: 'white' }} rel="noreferrer">See the survey result on google sheets</a></button>
             </div>
         </div>
     );

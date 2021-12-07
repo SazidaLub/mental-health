@@ -14,7 +14,7 @@ const Projects = () => {
             .then(data => setProjects(data))
     }, [])
     return (
-        <div>
+        <div className="backDes">
             <div className="mt-5 pt-5 mb-5">
                 <h1 className="text-center">Our Projects</h1>
                 <div className="row m-3 p-3">

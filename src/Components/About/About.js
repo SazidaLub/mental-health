@@ -14,7 +14,7 @@ const About = () => {
             .then(data => setPeoples(data))
     }, [])
     return (
-        <div>
+        <div >
             <div className="header-container">
                 <AboutMain></AboutMain>
             </div>

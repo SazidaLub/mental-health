@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-// import AboutMain from './AboutMain';
-// import './About.css';
+// import NewsMain from './NewsMain';
+// import './News.css';
 import { Spinner } from 'react-bootstrap';
 // import Info from './Info';
 import { Button, Card } from 'react-bootstrap';
 
-const About = () => {
+const News = () => {
     const [news, setNews] = useState([]);
 
     useEffect(() => {
@@ -14,7 +14,7 @@ const About = () => {
             .then(data => setNews(data))
     }, [])
     return (
-        <div>
+        <div className="backDes">
             <div className="mt-5 pt-5 mb-5">
                 <h1 className="text-center">News Portal</h1>
                 <div className="row m-3 p-3">
@@ -43,4 +43,4 @@ const About = () => {
     );
 };
 
-export default About;
+export default News;

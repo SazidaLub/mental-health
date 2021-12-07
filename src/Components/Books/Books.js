@@ -12,7 +12,7 @@ import '../../Components/Appointment/Appointment/Appointment.css'
 const Books = () => {
 
   return (
-    <div className="ms-5 pt-5 mb-5 pb-5 ">
+    <div className="ms-5 pt-5 mb-5 pb-5 backDes">
 <h1 className="text-center mt-5 pt-5">Resources</h1>
       <Grid container spacing={5} style={{ marginTop: "4%", width: "100%", alignItems: "center" }}>
         {Data.map(post => {

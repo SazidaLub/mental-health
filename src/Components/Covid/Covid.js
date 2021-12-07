@@ -14,7 +14,7 @@ const Covid = () => {
             .then(data => setCovid(data))
     }, [])
     return (
-        <div>
+        <div className="backDes">
             <div className="mt-5 pt-5 mb-5">
                 <h1 className="text-center">Covid-19 Effect on Mental Health</h1>
                 <div className="row m-3 p-3">
@@ -25,7 +25,7 @@ const Covid = () => {
                     }
                     {
                         covid.map(result =>
-                            <div className="col-md-3">
+                            <div className="col-md-6">
                                 <Card className="m-2 design" border="warning">
                                     <Card.Img variant="top" src={result.imageURL} />
                                     <Card.Body>

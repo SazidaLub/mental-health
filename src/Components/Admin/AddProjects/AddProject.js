@@ -4,6 +4,8 @@ import { Container, Table, Button } from 'react-bootstrap';
 import { useForm } from "react-hook-form";
 // import Manage from './Manage/Manage';
 // import './AddProject.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashAlt, faEdit } from '@fortawesome/free-solid-svg-icons'
 
 const AddProject = () => {
     const { register, handleSubmit, watch, errors } = useForm();
@@ -50,30 +52,32 @@ const AddProject = () => {
                 console.log(error);
             });
     }
-    // function myFunction() {
-    //     console.log('Clicked search');
-    //     if (document.getElementById("addproject") && document.getElementById("table")) {
-    //         document.getElementById("table").style.display = "block";
-    //         document.getElementById("addproject").style.display = "none";
-    //     }
-    // }
-    // function myFunction1() {
-    //     console.log('Clicked search');
-    //     if (document.getElementById("addProjects") && document.getElementById("table")) {
-    //         document.getElementById("table").style.display = "none";
-    //         document.getElementById("addproject").style.display = "block";
-    //     }
-    // }
+    const [state, setState] = useState();
+    const deleteEvent = id => {
+        console.log('remove clicked', id);
+        const url = `http://localhost:4000/deleteProjects/${id}`;
+        fetch(url, {
+            method: 'DELETE'
+        })
+            .then(res => res.json())
+            .then(result => {
+                console.log('deleted successfully', id);
+                alert("Deleted Successfully")
+                // if (result) {
+                //     peoples.target.parentNode.style.display = "none"
+                // }
+            })
+    }
     
 
     return (
-        <div className="m-5 p-5">
+        <div className="">
             {/* <div class="sidenav">
                 <a href="#addproject" onClick={myFunction}>Manage Project</a>
                 <a href="#addproject" onClick={myFunction1}>Add Project</a>
                 <a href="#edit">Edit Project</a>
             </div> */}
-            <div class="main" id="addProjects">
+            <div id="addProjects">
                 <div id="addproject">
                     <h1>Add Project</h1>
                     <form onSubmit={handleSubmit(onSubmit)}>
@@ -93,19 +97,31 @@ const AddProject = () => {
                         <br />
                         <input name="exampleRequired" type="file" onChange={handleImageUpload} />
                         <br />
+                        <small>Please wait for few seconds</small><br />
                         <input type="submit" name="Save" className="submitbtn" style={{ backgroundImage: "linear-gradient(yellow,aqua)", color: "black", borderRadius: "13px", font: "" }}/>
                     </form>
                 </div>
-                <Table id="table">
-                    <tr>
-                        <th>Project Name</th>
-                        <th>Place</th>
-                        <th>Email</th>
-                        <th>Action</th>
-                    </tr>
-                    {/* {
-                        projects.map(project => <Manage key={project.name} project={project}></Manage>)
-                    } */}
+                <Table striped bordered hover variant="none" style={{ width: "90%", marginTop: "20px" }}>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Place</th>
+                            <th>Details</th>
+                            <th>Image</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            projects.map(result =>
+                                <tr>
+                                    <td>{result.name}</td>
+                                    <td className="text1">{result.place}</td>
+                                    <td className="text">{result.details}</td>
+                                    <td className=""><img src={result.imageURL} alt="" className="img-fluid w-100 display-flex justify-content-center" /></td>
+                                    <td><FontAwesomeIcon icon={faTrashAlt} onClick={() => deleteEvent(result._id)} /></td>
+                                </tr>)}
+                    </tbody>
                 </Table>
             </div>
 

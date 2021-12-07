@@ -20,7 +20,7 @@ import Form from './Form';
 
 const Contact = () => {
   return (
-    <div className="ms-5 pt-5">
+    <div className="ms-5 pt-5 backDes">
       <Grid container spacing={3} style={{ marginTop: "8%", width: "100%", alignItems: "center" }}>
         <Grid item xs={12} sm={6} md={6}>
           <h1>Contact YouMatter Team</h1>

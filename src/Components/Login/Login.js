@@ -64,12 +64,14 @@ const Login = () => {
       createUserWithEmailAndPassword(user.name, user.email, user.password)
         .then(res => {
           handleResponse(res,true);
+          alert("Created")
         })
     }
     if (!newUser && user.email && user.password) {
       signInWithEmailAndPassword(user.email, user.password)
         .then(res => {
           handleResponse(res,true);
+          alert("Not Created")
         })
     }
     e.preventDefault();
@@ -78,7 +80,7 @@ const Login = () => {
       <div style={{ backgroundImage: `url(${background})` }}>
         <div className="loginPage" >    
             <h1>{newUser ? 'Sign Up' : 'Login'}</h1>
-            < form onSubmit={handleSubmitt} className="ship-form">
+            <form onSubmit={handleSubmitt} className="ship-form">
                 {newUser && < input placeholder="Your Name" {...register("name", { required: true })} onBlur={handleBlur} />}
                 {errors.name && <span className="error">Name is required</span>}
                 <br />
@@ -88,7 +90,8 @@ const Login = () => {
                 < input type= "password" placeholder="Your Password" {...register('password', { required: true })} onBlur={handleBlur} />
                 {errors.password && <span className="error">Password is required</span>}
                 <br />
-                <input type="submit" value={newUser ? 'Create an account' : 'Login'} style={{backgroundColor:"rgb(149, 252, 247)"}}/>
+                <input type="submit" value={newUser ? 'Create an account' : 'Login'} />
+                {/* <button > {newUser ? 'Create an account' : 'Login'}</button> */}
                 <br />
             </form >
             <p style={{ color: 'red' }}>{user.error}</p>
